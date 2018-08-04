@@ -10,6 +10,8 @@ import com.bank.logic.Operation;
 
 public interface RequestedServiceI {
 	
+	public boolean auth(String login, String password);
+	
 	/* These four methods are called when creation is required*/
 	/**
 	 * Call this method when created Agency is needed
@@ -45,6 +47,10 @@ public interface RequestedServiceI {
 	public List <Operation> getOperations();
 
 	public List <Customer> getCustomersByAgency(String agencyName);
+	
+	public List <Agency> getAgencyByID(String agencyID);
+	
+	public List <Agency> getAgencyByName(String agencyName);
 
 	public List <Account> getAccountsByCustomer(String customerID);
 	

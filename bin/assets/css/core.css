@@ -22,14 +22,36 @@
 }
 
 /* Icon color for settings when mouse hover */
-.glyph-icon-cogs:hover {
+.glyph-icon:hover {
 	-fx-fill : -fx-secondary;
 }
-
 
 /* General Buttons text color */
 .button {
 	-fx-text-fill : -fx-primarytext;
+	-fx-background-color : -fx-primary ;
+	-fx-border-radius  : 20px;
+	-fx-background-radius : 20px;
+}
+
+.button:hover {
+	-fx-text-fill : -fx-primarytext;
+	-fx-background-color : derive(-fx-primary, 5%) ;
+	-fx-border-color : -fx-secondary;
+}
+
+.add-button {
+	-fx-text-fill : -fx-primarytext;
+	-fx-background-color : -fx-primary ;
+	-fx-border-radius  : 20px;
+	-fx-background-radius : 20px;
+	-fx-text-fill : -fx-primarytext;
+	-fx-background-color : derive(-fx-primary, 5%) ;
+	-fx-border-color : -fx-secondary;
+}
+
+.add-button:hover {
+	-fx-background-color : derive(-fx-primary, 10%) ;
 }
 
 /* General Buttons color */
@@ -63,7 +85,63 @@
 }
 
 /* TextField sub-color when wrong credential is given */
-.wrong-credentials{
+.wrong-credentials {
 	-jfx-unfocus-color : -fx-red;
 	-jfx-focus-color : -fx-red;
+}
+
+/* Main css styling*/
+.tab {
+	-fx-pref-width : 200;
+	-fx-pref-height : 40;
+	-fx-text-fill : -fx-primarytext;
+}
+
+.tab-label {
+    -fx-text-fill: -fx-primarytext;
+}
+
+.tab-header-background {
+    -fx-background-color : -fx-primary;
+    -fx-text-fill : -fx-primarytext;
+}
+
+.menu-bar {
+	-fx-base : fx-primary;
+	-fx-background-color : -fx-primary;
+	-fx-text-fill : -fx-primarytext;
+}
+
+.menu .label{
+  -fx-text-fill : -fx-primarytext;
+}
+
+.menu-item .label{
+  -fx-text-fill : -fx-primarytext;
+}
+
+.context-menu {
+	-fx-background-color : derive(-fx-primary, 20%);
+}
+
+.jfx-hamburger-icon{
+	-fx-spacing: 7;
+}
+
+.jfx-hamburger-icon StackPane {
+	-fx-background-color : -fx-secondary;
+	-fx-background-radius : 5px;
+}
+
+.hbox {
+    -fx-background-color : derive(-fx-primary, 5%);
+    -fx-border-radius  : 20px;
+	-fx-background-radius : 20px;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+}
+
+.hbox-agence {
+    -fx-spacing: 80;
+    -fx-padding: 15;
 }

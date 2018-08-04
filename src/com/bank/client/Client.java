@@ -1,41 +1,40 @@
 package com.bank.client;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Properties;
 
 import com.bank.logic.Account;
 import com.bank.logic.Agency;
 import com.bank.logic.Customer;
 import com.bank.logic.Operation;
+import com.bank.settings.Preferences;
 
 public class Client {
 	
 public Socket socket;
 private static RequestedService requestedService;
+
+	Preferences preference;
 	
 	/**
 	 * Client constructor method. The constructor will initialize the socket parameter 
 	 * by calling configuration file. Then instantiate requested service class to be allowed 
 	 * to call service methods.
+	 * @throws IOException 
+	 * @throws UnknownHostException 
 	 */
-	public Client() {
-		try {
+	public Client() throws UnknownHostException, IOException {
+		
 			
 			/* Retrieve properties file */
-			Properties prop = new Properties();
-			prop.load((InputStream)new FileInputStream("config.properties"));	
+			preference = Preferences.getPreferences();	
 			
-			socket = new Socket(prop.getProperty("SERVER_ADDRESS"),
-								Integer.parseInt(prop.getProperty("SERVER_PORT")));
+			socket = new Socket(preference.getSERVER_ADDRESS(),
+					preference.getSERVER_PORT());
 			requestedService = new RequestedService(socket);
-		}
-		catch(IOException ex) {
-			System.out.println(ex.getMessage());
-		}
+		
 	}
 	
 	/**
@@ -46,6 +45,10 @@ private static RequestedService requestedService;
 	 *
 	 */
 	public class  Call {
+		
+		public boolean auth(String login, String password) {
+			return Client.requestedService.auth(login, password);
+		}
 		
 		public void createAgency(Agency agency) {
 			Client.requestedService.createAgency(agency);
@@ -65,6 +68,14 @@ private static RequestedService requestedService;
 		
 		public ArrayList<Agency> getAgencies(){
 			return Client.requestedService.getAgencies();
+		}
+		
+		public ArrayList<Agency> getAgencyByID(String agID){
+			return (ArrayList<Agency>) Client.requestedService.getAgencyByID(agID);
+		}
+		
+		public ArrayList<Agency> getAgencyByName(String agName){
+			return (ArrayList<Agency>) Client.requestedService.getAgencyByID(agName);
 		}
 		
 		public ArrayList<Account> getAccounts(){

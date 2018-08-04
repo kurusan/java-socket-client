@@ -1,5 +1,6 @@
 package com.bank.test;
 
+/*
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -8,13 +9,13 @@ import com.bank.logic.Account;
 import com.bank.logic.Agency;
 import com.bank.logic.Customer;
 import com.bank.logic.Operation;
+*/
 
 public class Test {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		Client client = new Client();
+		/*
+		Client client = new Client(); 
 		//Agency ag = new Agency("Val", "Dakar");
 		Customer cus = new Customer("Leye", "Mohamed", 9);
 		//Account act = new Account("AAAAAAAAAZ","Epargne","CR", 23466960,6);
@@ -42,14 +43,17 @@ public class Test {
 			while(it.hasNext()){
 				System.out.println(it.next().getOpLib().toString());
 			}
-		}*/
+		}
+		
 		
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		*/
 		
 	}
 

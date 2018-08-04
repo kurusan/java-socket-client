@@ -1,10 +1,7 @@
-package com.bank.controllers.auth;
+package com.bank.controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import org.apache.commons.codec.digest.DigestUtils;
 
 import com.bank.util.WindowLoader;
 
@@ -30,24 +27,41 @@ public class AuthController implements Initializable {
 	@FXML
 	private Button cancelButton;
 	
+	boolean connected = false;
 	
 	public AuthController() {}
 		
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {}	
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+	}	
 	
 	@FXML
 	public void loginListener(ActionEvent event){
-		String login = loginTextField.getText();
-		String password = DigestUtils.shaHex(passwordTextField.getText());
 		
-		if(isAuth(login, password)) {
-			((Stage)loginTextField.getScene().getWindow()).close();
-			loadMain();
+		String login = loginTextField.getText();
+		String password = passwordTextField.getText();
+		
+		new Thread(new Runnable() {
+		    public void run() {
+		    	if(ClientController.getClient()!=null) {
+		    		if(isAuth(login, password)) {
+		    			((Stage)loginTextField.getScene().getWindow()).close();
+		    			connected = true;
+		    		}
+		    		else {
+		    			loginTextField.getStyleClass().add("wrong-credentials");
+		    			passwordTextField.getStyleClass().add("wrong-credentials");
+		    		}
+		    	}
+		    }
+		}).start();
+		
+		if(connected) {
+			WindowLoader.getWindow().loadMain();
 		}
 		else {
-			loginTextField.getStyleClass().add("wrong-credentials");
-			passwordTextField.getStyleClass().add("wrong-credentials");
+			WindowLoader.getWindow().loadSettings();
 		}
 	}
 	
@@ -58,29 +72,17 @@ public class AuthController implements Initializable {
 	
 	@FXML
 	public void settingsListener(MouseEvent event){
-		loadSettings();
-	}
-	
-	void loadMain() {
-		try {
-			WindowLoader.getWindow().load("/com/bank/views/main.fxml", "SunuBank");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	void loadSettings(){
-		try {
-			WindowLoader.getWindow().load("/com/bank/views/settings.fxml", "Paramètre");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		WindowLoader.getWindow().loadSettings();
 	}
 	
 	public boolean isAuth(String login, String password) {
-		return false;
+		/*if(client.call().auth(login, password)) {
+			return true;
+		}
+		else{
+			return false;
+		}*/
+		return true;
 	}
 
 

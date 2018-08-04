@@ -14,14 +14,6 @@ import javafx.stage.Stage;
 public class SettingsController implements Initializable {
 	
 	@FXML
-	private TextField driverTextField;
-	@FXML
-	private TextField dbUrlTextField;
-	@FXML
-	private TextField dbUserTextField;
-	@FXML
-	private TextField dbPassTextField;
-	@FXML
 	private TextField addressTextField;
 	@FXML
 	private TextField portTextField;
@@ -50,7 +42,7 @@ public class SettingsController implements Initializable {
 	
 	@FXML
 	private void cancelListener(ActionEvent event){
-		((Stage)driverTextField.getScene().getWindow()).close();
+		((Stage)addressTextField.getScene().getWindow()).close();
 	}
 	
 	private void initFields() {

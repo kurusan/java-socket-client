@@ -3,6 +3,7 @@ package com.bank.client;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.bank.logic.Account;
 import com.bank.logic.Agency;
@@ -23,6 +24,20 @@ public class RequestedService implements RequestedServiceI{
 	public RequestedService(Socket socket){
 		this.socket = socket;
 	}
+	
+	@Override
+	public boolean auth(String login, String password) {
+		try {
+			SerializationClass.serialization(socket, "auth");
+			SerializationClass.serialization(socket, "login");
+			SerializationClass.serialization(socket, "password");
+			return (boolean)SerializationClass.deSerialization(socket);
+		} catch (IOException | ClassNotFoundException e) {
+			
+		}
+		return false;
+	}
+
 
 	@Override
 	public void createAgency(Agency agency) {
@@ -209,5 +224,30 @@ public class RequestedService implements RequestedServiceI{
 		return 0;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Agency> getAgencyByID(String agencyID) {
+		try {
+			SerializationClass.serialization(socket, "getAgencyByID");
+			SerializationClass.serialization(socket, "agencyID");
+			return (ArrayList<Agency>)SerializationClass.deSerialization(socket);
+		} catch (IOException | ClassNotFoundException e) {
+			
+		}
+		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Agency> getAgencyByName(String agencyName) {
+		try {
+			SerializationClass.serialization(socket, "getAgencyByName");
+			SerializationClass.serialization(socket, "agencyID");
+			return (ArrayList<Agency>)SerializationClass.deSerialization(socket);
+		} catch (IOException | ClassNotFoundException e) {}
+		return null;
+	}
+
+	
 
 }

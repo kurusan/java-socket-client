@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="649.0" 
+stylesheets="@/assets/css/core.css" 
+xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="com.bank.controllers.MainController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+               <menus>
+                  <Menu mnemonicParsing="false" text="Fichier">
+                     <items>
+                        <MenuItem fx:id="closeItem" mnemonicParsing="false" text="Fermer" />
+                        <MenuItem fx:id="settingsItem" mnemonicParsing="false" text="Paramètre" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Ajouter">
+                     <items>
+                        <MenuItem fx:id="agencyPannelItem"  mnemonicParsing="false" text="Agence" />
+                        <MenuItem fx:id="customerPannelItem"  mnemonicParsing="false" text="Client" />
+                        <MenuItem fx:id="accountPannelItem"  mnemonicParsing="false" text="Compte" />
+                        <MenuItem fx:id="operationPannelItem"  mnemonicParsing="false" text="Opération" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Aide?">
+                     <items>
+                        <MenuItem fx:id="helpItem" mnemonicParsing="false" text="A propos" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+         </top>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <center>
+            <AnchorPane prefHeight="281.0" prefWidth="649.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="408.0" prefWidth="649.0" styleClass="hbox" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                     <children>
+                        <Button fx:id="agencyButton" onAction="#agencyButtonListener" contentDisplay="TOP" mnemonicParsing="false" prefHeight="500.0" prefWidth="400.0" text="Agence">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="BANK" size="50" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="customerButton" onAction="#customerButtonListener" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="500.0" prefWidth="400.0" text="Clients">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="ADDRESS_BOOK" size="50" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="accountButton" onAction="#accountButtonListener" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="500.0" prefWidth="400.0" text="Compte">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="FILE_TEXT" size="50" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="operationButton" onAction="#operationButtonListener" contentDisplay="TOP" layoutX="348.0" layoutY="10.0" mnemonicParsing="false" prefHeight="500.0" prefWidth="400.0" text="Operation">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="SHARE_SQUARE" size="50" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>
